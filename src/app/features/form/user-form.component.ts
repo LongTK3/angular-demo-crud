@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/core/services/api.services';
 import { User } from 'src/app/core/models/user-model';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-user-form',
     templateUrl: './user-form.component.html',
     styleUrls: ['./user-form.component.scss']
 })
-export class UserFormComponent implements OnInit {
+export class UserFormComponent implements OnInit, OnDestroy {
     userForm!: FormGroup;
+    private userSubscription: Subscription = new Subscription();
 
     constructor(
         private fb: FormBuilder,
@@ -29,16 +31,31 @@ export class UserFormComponent implements OnInit {
     }
 
     onSubmit() {
-        if (this.userForm.invalid) return;
+        if (this.userForm.invalid) {
+            return;
+        }
 
         const user: User = { id: 0, ...this.userForm.value };
 
-        this.apiService.createUser(user).subscribe(() => {
-            this.router.navigate(['/users']);
-        });
+        this.userSubscription.add(
+            this.apiService.createUser(user).subscribe({
+                next: () => {
+                    this.router.navigate(['/users']);
+                },
+                error: (err) => {
+                    console.error('Error creating user:', err);
+                }
+            })
+        );
     }
 
     cancel() {
         this.router.navigate(['/users']);
+    }
+
+    ngOnDestroy() {
+        if (this.userSubscription) {
+            this.userSubscription.unsubscribe();
+        }
     }
 }

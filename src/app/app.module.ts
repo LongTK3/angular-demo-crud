@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // ✅ Import ReactiveFormsModule
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { UserFormComponent } from './features/form/user-form.component';
@@ -14,14 +14,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { UserDialog } from './features/user-dialog/user-dialog.component';
+import { UserDialogComponent } from './features/user-dialog/user-dialog.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { EditUserDialog } from './features/edit-user-dialog/edit-user-dialog.component';
+import { EditUserDialogComponent } from './features/edit-user-dialog/edit-user-dialog.component';
+import { ApiInterceptor } from './core/services/api.interceptor.service';
 
 
 @NgModule({
@@ -29,8 +30,8 @@ import { EditUserDialog } from './features/edit-user-dialog/edit-user-dialog.com
     AppComponent,
     UserFormComponent,
     UserListComponent,
-    UserDialog,
-    EditUserDialog
+    UserDialogComponent,
+    EditUserDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +53,12 @@ import { EditUserDialog } from './features/edit-user-dialog/edit-user-dialog.com
     CommonModule,
     MatToolbarModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiInterceptor,
+      multi: true
+    }
+  ], bootstrap: [AppComponent]
 })
 export class AppModule { }
