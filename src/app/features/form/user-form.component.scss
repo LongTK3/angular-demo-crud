@@ -1,0 +1,103 @@
+::ng-deep {
+  .custom-modal {
+    .mat-dialog-container {
+      position: fixed;
+      padding: 20px;
+      border-radius: 8px;
+      background: white;
+      width: 600px;
+      max-width: 90vw;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .cdk-overlay-backdrop {
+    background: rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .cdk-overlay-pane {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .cdk-overlay-container {
+    justify-items: center;
+  }
+}
+
+// Buttons
+.btn-primary {
+  background-color: #3f51b5;
+  color: white;
+}
+
+// Form styling
+.full-width {
+  width: 100%;
+}
+
+.input-width {
+  width: 30%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+// Input field adjustments
+.small-input {
+  mat-form-field {
+    font-size: 12px;
+  }
+
+  input {
+    height: 32px !important;
+    font-size: 12px !important;
+  }
+
+  mat-label {
+    font-size: 14px !important;
+  }
+
+  ::placeholder {
+    font-size: 12px !important;
+    color: gray;
+  }
+
+  mat-error {
+    font-size: 12px !important;
+    color: red;
+  }
+}
+
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  width: 30%;
+
+  h2 {
+    margin: 0;
+  }
+
+  .actions {
+    .btn-primary {
+      background-color: #3f51b5;
+      color: white;
+      margin-left: 10px;
+      font-weight: bold;
+      padding: 8px 16px;
+    }
+  }
+}

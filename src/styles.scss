@@ -1,0 +1,12 @@
+.cdk-overlay-backdrop {
+    background: rgba(0, 0, 0, 0.5) !important; /* Đảm bảo lớp nền mờ */
+}
+
+.cdk-overlay-pane {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+
+/* You can add global styles to this file, and also import other style files */

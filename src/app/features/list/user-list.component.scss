@@ -1,0 +1,101 @@
+// 📝 TABLE STYLING
+.full-width-table {
+  width: 100%;
+  padding-right: 10%;
+}
+
+.paginator {
+  margin-top: 20px;
+  padding-right: 10%;
+}
+
+// 📝 ICONS & BUTTONS
+mat-icon {
+  font-size: 10px;
+}
+
+.mat-icon {
+  font-size: 24px;
+}
+
+button {
+  margin: 0 5px;
+  height: 36px;
+}
+
+// 📝 LOADING & NO DATA STYLES
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.no-data {
+  text-align: center;
+  font-size: 18px;
+  color: gray;
+  margin-top: 20px;
+}
+
+// 📝 MATERIAL TABLE HEADER STYLES
+::ng-deep .mat-sort-header-content {
+  color: #1976d2 !important;
+  font-weight: bold !important;
+  padding: 16px 0 !important;
+}
+
+// 📝 MODAL STYLING
+::ng-deep {
+  .details-modal {
+    .mat-dialog-container {
+      background: rgb(172, 162, 162);
+      border-radius: 8px;
+      padding: 20px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .edit-custom-modal {
+    .mat-dialog-container {
+      background: rgb(172, 162, 162);
+      border-radius: 8px;
+      padding: 20px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .mat-dialog-container {
+    z-index: 1000 !important;
+  }
+
+  .mat-dialog-backdrop {
+    background: rgba(0, 0, 0, 0.5) !important;
+    z-index: 99 !important;
+  }
+}
+
+// 📝 PAGE CONTAINER (User List)
+.container {
+  position: fixed;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.clickable {
+  text-decoration: underline;
+  color: #1976d2;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: #125a9e;
+    text-decoration: none;
+  }
+}
