@@ -1,12 +1,11 @@
-<div class="header">
-    <h2>Add User</h2>
-    <div class="actions">
-        <button mat-raised-button class="btn-primary" color="primary" type="submit"
-            [disabled]="userForm.invalid">Save</button>
-    </div>
-</div>
-
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="header">
+        <h2>Add User</h2>
+        <div class="actions">
+            <button mat-raised-button class="btn-primary" color="primary" type="submit" [disabled]="userForm.invalid"
+                [ngClass]="{ 'disabled-btn': userForm.invalid }">Save</button>
+        </div>
+    </div>
     <div class="form-group">
         <mat-form-field appearance="fill" class="input-width small-input">
             <mat-label>First Name</mat-label>
