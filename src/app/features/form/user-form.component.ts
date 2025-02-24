@@ -21,7 +21,6 @@ export class UserFormComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit() {
-        console.log("AAAAAAAAAAAA, ", this.userForm);
 
         this.userForm = this.fb.group({
             firstName: ['', [Validators.required, Validators.pattern(/^[a-zA-ZÀ-ỹ\s]+$/)]],
@@ -34,11 +33,8 @@ export class UserFormComponent implements OnInit, OnDestroy {
 
     onSubmit() {
         if (this.userForm.invalid) {
-            console.log("XXXXXXXXXXX, ", this.userForm);
-
             return;
         }
-        console.log("YYYYYYYYYYYYYY, ", this.userForm);
 
         const user: User = { id: 0, ...this.userForm.value };
 
